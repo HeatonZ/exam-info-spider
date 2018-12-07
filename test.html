@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="data.js"></script>
+  </head>
+  <body>
+    <table id="show" border="2">
+      <!-- caption元素可以生成表标题，其单元格列跨度为表格的列数 -->
+      <tr>
+        <!-- 可以使用rowspan和colspan来合并单元格 -->
+        <th rowspan="2">地点</th>
+        <th rowspan="2">第几周</th>
+        <th rowspan="2">周几</th>
+        <th rowspan="2">开始时间</th>
+        <th rowspan="2">持续时间</th>
+        <th rowspan="2">学院</th>
+        <th rowspan="2">科目</th>
+      </tr>
+      <tr></tr><tr></tr>
+      
+    </table>
+
+    <script>
+      main(data);
+      function main(data) {
+        let res = [];
+        data.forEach(item => {
+            if (item.type === "ks") {
+            let tr = document.createElement("tr");
+            let td = document.createElement("td");
+            tr.innerHTML =
+              "<td>" +
+              "励耘楼B410" +
+              "</td>" +
+              "<td>" +
+              item.startWeek +
+              " </td>" +
+              "<td>" +
+              item.dayOfWeek +
+              " </td>" +
+              "<td>" +
+              item.startSection +
+              " </td>" +
+              "<td>" +
+              item.totalSection +
+              " </td>" +
+              "<td>" +
+              item.department +
+              " </td>" +
+              "<td>" +
+              item.description +
+              "</td>";
+            let temp = {
+              startWeek: item.startWeek,
+              oddEven: item.oddEven,
+              dayOfWeek: item.dayOfWeek,
+              totalSection: item.totalSection,
+              description: item.description,
+              endWeek: item.endWeek,
+              type: item.type,
+              department: item.department,
+              startSection: item.startSection
+            };
+            res.push(temp);
+            console.log();
+            document.getElementsByTagName("table")[0].append(tr);
+          }
+        });
+        console.log(res);
+      }
+    </script>
+  </body>
+</html>
